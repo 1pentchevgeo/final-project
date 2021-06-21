@@ -1,0 +1,23 @@
+---
+title: "Final Markdown"
+author: "George Pentchev"
+date: "21/06/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(readxl)
+```
+
+```{r enrollment-plot}
+raw_data <- read_xlsx("mdc_enrol_1819_en_supp.xlsx",
+                      col_types = cols(.default = col_character(),
+                                   Grade = col_factor(),
+                                   Enrolment = col_double()))
+
+raw_data %>% 
+  mutate()
+```
+
