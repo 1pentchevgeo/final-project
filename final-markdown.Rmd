@@ -12,12 +12,15 @@ library(readxl)
 ```
 
 ```{r enrollment-plot}
-raw_data <- read_xlsx("mdc_enrol_1819_en_supp.xlsx",
-                      col_types = cols(.default = col_character(),
-                                   Grade = col_factor(),
-                                   Enrolment = col_double()))
+raw_data <- read_xlsx("mdc_enrol_1819_en_supp.xlsx")
 
 raw_data %>% 
-  mutate()
+  mutate(Grade = factor(Grade, levels = c("Grade 9", "Grade 10", "Grade 11", "Grade 12")),
+         Enrolment = as.double(Enrolment)) %>% 
+  arrange(desc(Enrolment)) %>% 
+  slice(1:15) %>% 
+  ggplot(aes(`Course Code`, Enrolment)) +
+  geom_col() +
+  facet_wrap(~ Grade)
 ```
 
