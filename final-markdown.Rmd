@@ -9,22 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(readxl)
-library(plotly)
 ```
 
-```{r enrollment-plot}
-raw_data <- read_xlsx("mdc_enrol_1819_en_supp.xlsx")
+```{r 1819-plot}
+clean_1819 <- read_rds("clean_1819.rds")
 
-clean_data <- raw_data %>% 
-  mutate(Grade = factor(Grade, levels = c("Grade 9",
-                                          "Grade 10",
-                                          "Grade 11",
-                                          "Grade 12")),
-         Enrolment = as.double(Enrolment),
-         `Pathway or Destination` = as.factor(`Pathway or Destination`)) %>% 
-  drop_na(Grade)
-
-clean_data %>% 
+clean_1819 %>% 
   group_by(Grade) %>% 
   arrange(desc(Enrolment)) %>% 
   slice(1:20) %>% 
@@ -40,7 +30,166 @@ clean_data %>%
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
   ylim(0, 150000) +
-  labs(title = "Secondary School Courses vs. Number of Students Enrolled",
-       x = "")
+  labs(title = "Secondary School Courses by Number of Students Enrolled (2018-2019)")
+```
+
+```{r 1718-plot}
+clean_1718 <- read_rds("clean_1718.rds")
+
+clean_1718 %>% 
+  group_by(Grade) %>% 
+  arrange(desc(Enrolment)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
+             y = Enrolment,
+             fill = `Pathway or Destination`,
+             text = paste("Course Code:", `Course Code`, "\n",
+                          "Course Description:", `Course Description`, "\n",
+                          "# of Students Enrolled:", Enrolment, "\n",
+                          "Pathway/Destination:", `Pathway or Destination`))) +
+  geom_col() +
+  facet_wrap(~ Grade, scales = "free") +
+  scale_y_continuous(labels = scales::comma_format()) +
+  scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
+  ylim(0, 150000) +
+  labs(title = "Secondary School Courses by Number of Students Enrolled (2017-2018)")
+```
+
+```{r 1617-plot}
+clean_1617 <- read_rds("clean_1617.rds")
+
+clean_1617 %>% 
+  group_by(Grade) %>% 
+  arrange(desc(Enrolment)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
+             y = Enrolment,
+             fill = `Pathway or Destination`,
+             text = paste("Course Code:", `Course Code`, "\n",
+                          "Course Description:", `Course Description`, "\n",
+                          "# of Students Enrolled:", Enrolment, "\n",
+                          "Pathway/Destination:", `Pathway or Destination`))) +
+  geom_col() +
+  facet_wrap(~ Grade, scales = "free") +
+  scale_y_continuous(labels = scales::comma_format()) +
+  scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
+  ylim(0, 150000) +
+  labs(title = "Secondary School Courses by Number of Students Enrolled (2016-2017)")
+```
+
+```{r 1516-plot}
+clean_1516 <- read_rds("clean_1516.rds")
+
+clean_1516 %>% 
+  group_by(Grade) %>% 
+  arrange(desc(Enrolment)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
+             y = Enrolment,
+             fill = `Pathway or Destination`,
+             text = paste("Course Code:", `Course Code`, "\n",
+                          "Course Description:", `Course Description`, "\n",
+                          "# of Students Enrolled:", Enrolment, "\n",
+                          "Pathway/Destination:", `Pathway or Destination`))) +
+  geom_col() +
+  facet_wrap(~ Grade, scales = "free") +
+  scale_y_continuous(labels = scales::comma_format()) +
+  scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
+  ylim(0, 150000) +
+  labs(title = "Secondary School Courses by Number of Students Enrolled (2015-2016)")
+```
+
+```{r 1415-plot}
+clean_1415 <- read_rds("clean_1415.rds")
+
+clean_1415 %>% 
+  group_by(Grade) %>% 
+  arrange(desc(Enrolment)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
+             y = Enrolment,
+             fill = `Pathway or Destination`,
+             text = paste("Course Code:", `Course Code`, "\n",
+                          "Course Description:", `Course Description`, "\n",
+                          "# of Students Enrolled:", Enrolment, "\n",
+                          "Pathway/Destination:", `Pathway or Destination`))) +
+  geom_col() +
+  facet_wrap(~ Grade, scales = "free") +
+  scale_y_continuous(labels = scales::comma_format()) +
+  scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
+  ylim(0, 150000) +
+  labs(title = "Secondary School Courses by Number of Students Enrolled (2014-2015)")
+```
+
+```{r 1314-plot}
+clean_1314 <- read_rds("clean_1314.rds")
+
+clean_1314 %>% 
+  group_by(Grade) %>% 
+  arrange(desc(Enrolment)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
+             y = Enrolment,
+             fill = `Pathway or Destination`,
+             text = paste("Course Code:", `Course Code`, "\n",
+                          "Course Description:", `Course Description`, "\n",
+                          "# of Students Enrolled:", Enrolment, "\n",
+                          "Pathway/Destination:", `Pathway or Destination`))) +
+  geom_col() +
+  facet_wrap(~ Grade, scales = "free") +
+  scale_y_continuous(labels = scales::comma_format()) +
+  scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
+  ylim(0, 150000) +
+  labs(title = "Secondary School Courses by Number of Students Enrolled (2013-2014)")
+```
+
+```{r 1213-plot}
+clean_1213 <- read_rds("clean_1213.rds")
+
+clean_1213 %>% 
+  group_by(Grade) %>% 
+  arrange(desc(Enrolment)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
+             y = Enrolment,
+             fill = `Pathway or Destination`,
+             text = paste("Course Code:", `Course Code`, "\n",
+                          "Course Description:", `Course Description`, "\n",
+                          "# of Students Enrolled:", Enrolment, "\n",
+                          "Pathway/Destination:", `Pathway or Destination`))) +
+  geom_col() +
+  facet_wrap(~ Grade, scales = "free") +
+  scale_y_continuous(labels = scales::comma_format()) +
+  scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
+  ylim(0, 150000) +
+  labs(title = "Secondary School Courses by Number of Students Enrolled (2012-2013)")
+```
+
+```{r 1112-plot}
+clean_1112 <- read_rds("clean_1112.rds")
+
+clean_1112 %>% 
+  group_by(Grade) %>% 
+  arrange(desc(Enrolment)) %>% 
+  slice(1:20) %>% 
+  ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
+             y = Enrolment,
+             fill = `Pathway or Destination`,
+             text = paste("Course Code:", `Course Code`, "\n",
+                          "Course Description:", `Course Description`, "\n",
+                          "# of Students Enrolled:", Enrolment, "\n",
+                          "Pathway/Destination:", `Pathway or Destination`))) +
+  geom_col() +
+  facet_wrap(~ Grade, scales = "free") +
+  scale_y_continuous(labels = scales::comma_format()) +
+  scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
+  ylim(0, 150000) +
+  labs(title = "Secondary School Courses by Number of Students Enrolled (2011-2012)")
+```
+
+```{r}
+clean_1112
+clean_1213
+clean_1314
 ```
 
