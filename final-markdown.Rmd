@@ -108,11 +108,11 @@ clean_1415 %>%
   slice(1:20) %>% 
   ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
              y = Enrolment,
-             fill = `Pathway or Destination`,
+             fill = `Pathway or destination`,
              text = paste("Course Code:", `Course Code`, "\n",
-                          "Course Description:", `Course Description`, "\n",
+                          "Course Description:", `Course description`, "\n",
                           "# of Students Enrolled:", Enrolment, "\n",
-                          "Pathway/Destination:", `Pathway or Destination`))) +
+                          "Pathway/Destination:", `Pathway or destination`))) +
   geom_col() +
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
@@ -192,4 +192,3 @@ clean_1112
 clean_1213
 clean_1314
 ```
-
