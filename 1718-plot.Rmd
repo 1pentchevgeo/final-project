@@ -1,5 +1,5 @@
 ---
-title: "Secondary School Courses Ranked by Enrolment (2018-2019)"
+title: "Secondary School Courses Ranked by Enrolment (2017-2018)"
 site: distill::distill_website
 ---
 
@@ -10,13 +10,13 @@ library(readxl)
 library(plotly)
 ```
 
-```{r 1819-plot, fig.height=6}
-clean_1819 <- read_rds("clean_1819.rds") %>% 
+```{r 1718-plot, fig.height=6}
+clean_1718 <- read_rds("clean_1718.rds") %>% 
   group_by(Grade) %>% 
   arrange(desc(Enrolment)) %>% 
   slice(1:20)
 
-plot_1819 <- clean_1819 %>% 
+plot_1718 <- clean_1718 %>% 
   ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
              y = Enrolment,
              fill = `Pathway or Destination`,
@@ -29,9 +29,9 @@ plot_1819 <- clean_1819 %>%
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = "", name = "") +
   ylim(0, 180000) +
-  labs(title = "Top 20 Secondary School Courses by Number of Students Enrolled (2018-2019)")
+  labs(title = "Top 20 Secondary School Courses by Number of Students Enrolled (2017-2018)")
 
-plot_1819 %>% 
+plot_1718 %>% 
   ggplotly(tooltip = "text") %>% 
   layout(width = 1000,
          height = 600,

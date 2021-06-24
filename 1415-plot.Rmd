@@ -1,5 +1,5 @@
 ---
-title: "Secondary School Courses Ranked by Enrolment (2018-2019)"
+title: "Secondary School Courses Ranked by Enrolment (2014-2015)"
 site: distill::distill_website
 ---
 
@@ -10,28 +10,28 @@ library(readxl)
 library(plotly)
 ```
 
-```{r 1819-plot, fig.height=6}
-clean_1819 <- read_rds("clean_1819.rds") %>% 
+```{r 1415-plot, fig.height=6}
+clean_1415 <- read_rds("clean_1415.rds") %>% 
   group_by(Grade) %>% 
   arrange(desc(Enrolment)) %>% 
   slice(1:20)
 
-plot_1819 <- clean_1819 %>% 
+plot_1415 <- clean_1415 %>% 
   ggplot(aes(x = fct_reorder(as.factor(`Course Code`), desc(Enrolment)),
              y = Enrolment,
-             fill = `Pathway or Destination`,
+             fill = `Pathway or destination`,
              text = paste("Course Code:", `Course Code`, "\n",
-                          "Course Description:", `Course Description`, "\n",
+                          "Course Description:", `Course description`, "\n",
                           "# of Students Enrolled:", Enrolment, "\n",
-                          "Pathway/Destination:", `Pathway or Destination`))) +
+                          "Pathway/Destination:", `Pathway or destination`))) +
   geom_col() +
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = "", name = "") +
   ylim(0, 180000) +
-  labs(title = "Top 20 Secondary School Courses by Number of Students Enrolled (2018-2019)")
+  labs(title = "Top 20 Secondary School Courses by Number of Students Enrolled (2014-2015)")
 
-plot_1819 %>% 
+plot_1415 %>% 
   ggplotly(tooltip = "text") %>% 
   layout(width = 1000,
          height = 600,

@@ -14,6 +14,20 @@ navbar:
       menu:
         - text: "2018-2019"
           href: 1819-plot.html
+        - text: "2017-2018"
+          href: 1718-plot.html
+        - text: "2016-2017"
+          href: 1617-plot.html
+        - text: "2015-2016"
+          href: 1516-plot.html
+        - text: "2014-2015"
+          href: 1415-plot.html
+        - text: "2013-2014"
+          href: 1314-plot.html
+        - text: "2012-2013"
+          href: 1213-plot.html
+        - text: "2011-2012"
+          href: 1112-plot.html
 output:
   distill::distill_article:
     code_folding: true
