@@ -5,6 +5,8 @@ date: "21/06/2021"
 output: html_document
 ---
 
+At the juvenile age of 14, students are forced to make a decision that will make or break their high school life. That decision is picking out their freshman year courses. Courses range from vague and broad, such as Mathematics to verbosely specific, such as Dance-Social Dance (Ballroom, Swing, Traditional Form) — Yes, that is a real secondary school course. It's crucial for students to know which courses are popular and generally liked among students, and it's crucial for high schools to predict the interest in their courses so they can know which ones to fund and which to discontinue.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -29,7 +31,7 @@ clean_1819 %>%
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
-  ylim(0, 150000) +
+  ylim(0, 180000) +
   labs(title = "Secondary School Courses by Number of Students Enrolled (2018-2019)")
 ```
 
@@ -51,7 +53,7 @@ clean_1718 %>%
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
-  ylim(0, 150000) +
+  ylim(0, 180000) +
   labs(title = "Secondary School Courses by Number of Students Enrolled (2017-2018)")
 ```
 
@@ -73,7 +75,7 @@ clean_1617 %>%
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
-  ylim(0, 150000) +
+  ylim(0, 180000) +
   labs(title = "Secondary School Courses by Number of Students Enrolled (2016-2017)")
 ```
 
@@ -95,7 +97,7 @@ clean_1516 %>%
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
-  ylim(0, 150000) +
+  ylim(0, 180000) +
   labs(title = "Secondary School Courses by Number of Students Enrolled (2015-2016)")
 ```
 
@@ -117,7 +119,7 @@ clean_1415 %>%
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
-  ylim(0, 150000) +
+  ylim(0, 180000) +
   labs(title = "Secondary School Courses by Number of Students Enrolled (2014-2015)")
 ```
 
@@ -139,7 +141,7 @@ clean_1314 %>%
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
-  ylim(0, 150000) +
+  ylim(0, 180000) +
   labs(title = "Secondary School Courses by Number of Students Enrolled (2013-2014)")
 ```
 
@@ -161,7 +163,7 @@ clean_1213 %>%
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
-  ylim(0, 150000) +
+  ylim(0, 180000) +
   labs(title = "Secondary School Courses by Number of Students Enrolled (2012-2013)")
 ```
 
@@ -183,7 +185,7 @@ clean_1112 %>%
   facet_wrap(~ Grade, scales = "free") +
   scale_y_continuous(labels = scales::comma_format()) +
   scale_x_discrete(labels = NULL, breaks = NULL, name = NULL) +
-  ylim(0, 150000) +
+  ylim(0, 180000) +
   labs(title = "Secondary School Courses by Number of Students Enrolled (2011-2012)")
 ```
 
