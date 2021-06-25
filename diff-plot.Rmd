@@ -38,7 +38,9 @@ diff_plot <- clean_diff %>%
   geom_line(aes(y = `MFM2P`, color = "mediumspringgreen", text = paste("MFM2P"))) +
   geom_line(aes(y = `PPL2O`, color = "palevioletred2", text = paste("PPL2O"))) +
   theme(legend.position = "none") +
-  labs(x = "Year Difference", y = "Enrollment Difference")
+  labs(title = "Number of Students Joining/Leaving Courses (2011-2019)",
+       x = "Year Difference",
+       y = "Enrollment Difference")
 
 diff_plot %>% 
   ggplotly(tooltip = "text")

@@ -14,3 +14,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+## The Data
+
+The raw data for this project came from the Ontario Government's yearly releases of data for all secondary schools in the province. The data sets list different courses and include that course's code, description, pathway/destination, grade, and the number of students enrolled. Here is a sample of what the raw data looks like:
+
+### Raw Data for the 2018-2019 School Year
+
+```{r}
+clean_1819 <- readr::read_rds("clean_1819.rds")
+
+rmarkdown::paged_table(clean_1819)
+```
+

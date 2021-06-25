@@ -7,7 +7,7 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
+    - text: "Details"
       href: about.html
   left:
     - text: "Courses Ranked by Enrolment"

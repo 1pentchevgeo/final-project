@@ -1,9 +1,19 @@
 ---
-title: "About this project"
+title: "Project Details"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## Data Licence
+
 All data used in this project is sourced from the [Ontario Data Catalogue](https://data.ontario.ca/dataset/course-enrolment-in-secondary-schools), and is available for public use under the Open Government Licence.
+
+## About Me
+
+My name is George Pentchev. I am 17 years old and I attend White Oaks Secondary School in Oakville, Ontario, where I will be a senior this coming year. This project was possible due to my enrollment in [Kane's Free High School Data Science Bootcamp](https://bootcamp.davidkane.info/). This project was the first fully independent project I've created using R, and I had a lot of fun learning about R and how to use R tools, such as Distill (which was used to make this website). I hope to make more Data Science projects in the future!
+
+### Contact Info:
+
+**Email:** [1pentchevgeo\@hdsb.ca](mailto:1pentchevgeo@hdsb.ca)
