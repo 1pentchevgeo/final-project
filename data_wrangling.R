@@ -119,3 +119,67 @@ clean_1112 <- raw_1112 %>%
 
 write_rds(clean_1112, "clean_1112.rds")
 
+# DATA FOR DIFFERENCES
+
+all_years <- clean_1415 %>% 
+  rename(`Pathway or Destination` = `Pathway or destination`,
+         `Course Description` = `Course description`) %>% 
+  inner_join(clean_1112,
+             by = c("Course Code",
+                    "Course Description",
+                    "Grade",
+                    "Pathway or Destination"),
+             suffix = c(".1415", ".1112")) %>% 
+  inner_join(clean_1213,
+             by = c("Course Code",
+                    "Course Description",
+                    "Grade",
+                    "Pathway or Destination")) %>% 
+  inner_join(clean_1314,
+             by = c("Course Code",
+                    "Course Description",
+                    "Grade",
+                    "Pathway or Destination"),
+             suffix = c(".1213", ".1314")) %>% 
+  inner_join(clean_1516,
+             by = c("Course Code",
+                    "Course Description",
+                    "Grade",
+                    "Pathway or Destination")) %>% 
+  inner_join(clean_1617,
+             by = c("Course Code",
+                    "Course Description",
+                    "Grade",
+                    "Pathway or Destination"),
+             suffix = c(".1516", ".1617")) %>% 
+  inner_join(clean_1718,
+             by = c("Course Code",
+                    "Course Description",
+                    "Grade",
+                    "Pathway or Destination")) %>% 
+  inner_join(clean_1819,
+             by = c("Course Code",
+                    "Course Description",
+                    "Grade",
+                    "Pathway or Destination"),
+             suffix = c(".1718", ".1819")) %>% 
+  arrange(desc(Enrolment.1819)) %>% 
+  slice(1:20) %>% 
+  drop_na(Grade)
+
+clean_diff <- all_years %>% 
+  mutate(zeroth = 0,
+         first = Enrolment.1213 - Enrolment.1112,
+         second = Enrolment.1314 - Enrolment.1112,
+         third = Enrolment.1415 - Enrolment.1112,
+         fourth = Enrolment.1516 - Enrolment.1112,
+         fifth = Enrolment.1617 - Enrolment.1112,
+         sixth = Enrolment.1718 - Enrolment.1112,
+         seventh = Enrolment.1819 - Enrolment.1112) %>% 
+  select(-(3:12)) %>%
+  select(-1) %>% 
+  pivot_longer(-1) %>% 
+  pivot_wider(names_from = 1, values_from = value)
+
+write_rds(clean_diff, "clean_diff.rds")
+

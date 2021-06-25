@@ -1,10 +1,9 @@
 ---
-title: "About this site"
-description: |
-  Some additional details about the website
+title: "About this project"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+All data used in this project is sourced from the [Ontario Data Catalogue](https://data.ontario.ca/dataset/course-enrolment-in-secondary-schools), and is available for public use under the Open Government Licence.

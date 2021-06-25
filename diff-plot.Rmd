@@ -1,0 +1,45 @@
+---
+title: "Performance of Top Secondary School Courses"
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(readxl)
+library(plotly)
+library(reshape2)
+```
+
+```{r diff-plot-2}
+clean_diff <- read_rds("clean_diff.rds")
+
+diff_plot <- clean_diff %>% 
+  ggplot(aes(x = rownames(clean_diff),
+             group = 1)) +
+  geom_line(aes(y = `GLC2O`, color = "blue", text = paste("GLC2O"))) +
+  geom_line(aes(y = `PPL1O`, color = "red", text = paste("PPL1O"))) +
+  geom_line(aes(y = `SNC1D`, color = "orange", text = paste("SNC1D"))) +
+  geom_line(aes(y = `MPM1D`, color = "cyan", text = paste("MPM1D"))) +
+  geom_line(aes(y = `CGC1D`, color = "green", text = paste("CGC1D"))) +
+  geom_line(aes(y = `ENG1D`, color = "darkgoldenrod1", text = paste("ENG1D"))) +
+  geom_line(aes(y = `SNC2D`, color = "blueviolet", text = paste("SNC2D"))) +
+  geom_line(aes(y = `ENG2D`, color = "brown", text = paste("ENG2D"))) +
+  geom_line(aes(y = `MPM2D`, color = "black", text = paste("MPM2D"))) +
+  geom_line(aes(y = `CHC2D`, color = "darkorchid", text = paste("CHC2D"))) +
+  geom_line(aes(y = `ENG3U`, color = "darkseagreen", text = paste("ENG3U"))) +
+  geom_line(aes(y = `ENG4U`, color = "deeppink", text = paste("ENG4U"))) +
+  geom_line(aes(y = `MCR3U`, color = "coral", text = paste("MCR3U"))) +
+  geom_line(aes(y = `FSF1D`, color = "chartreuse", text = paste("FSF1D"))) +
+  geom_line(aes(y = `SCH3U`, color = "blue4", text = paste("SCH3U"))) +
+  geom_line(aes(y = `SBI3U`, color = "darkgoldenrod", text = paste("SBI3U"))) +
+  geom_line(aes(y = `MHF4U`, color = "burlywood", text = paste("MHF4U"))) +
+  geom_line(aes(y = `ENG4C`, color = "darkolivegreen1", text = paste("ENG4C"))) +
+  geom_line(aes(y = `MFM2P`, color = "mediumspringgreen", text = paste("MFM2P"))) +
+  geom_line(aes(y = `PPL2O`, color = "palevioletred2", text = paste("PPL2O"))) +
+  theme(legend.position = "none") +
+  labs(x = "Year Difference", y = "Enrollment Difference")
+
+diff_plot %>% 
+  ggplotly(tooltip = "text")
+```

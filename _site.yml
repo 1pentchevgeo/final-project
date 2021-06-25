@@ -28,6 +28,8 @@ navbar:
           href: 1213-plot.html
         - text: "2011-2012"
           href: 1112-plot.html
+    - text: "Performance of Top Courses"
+      href: diff-plot.html
 output:
   distill::distill_article:
     code_folding: true
